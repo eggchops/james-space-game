@@ -1,0 +1,213 @@
+:root{
+    --grid-cell-size: 40px;
+}
+body{
+    background-color: rgb(11, 0, 24);
+    color: yellow;
+    height: 100vh;
+    overflow: hidden;
+    @media (max-width: 768px) {
+        overflow: auto;
+        padding-bottom: 20px;
+    }
+    background-image: radial-gradient(white 1%, transparent 10%),
+          radial-gradient(white 1%, transparent 10%);
+    background-size:40px 40px;
+    background-position: 0 0, 60px 60px;
+    animation-name: backgroundmovement;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+  
+/*creates movement of the background*/
+@keyframes backgroundmovement {
+    0% {
+        background-position: 0px 0px, 60px 60px;
+    }
+    100% {
+        background-position: 60px 60px, 120px 120px;
+    }
+}
+
+nav{
+    width: 100%;
+    margin-top: 30vh;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    input{
+        padding: 6px;
+        background-color: rgb(0, 0, 38);
+        color: white;
+    }
+}
+
+.hidden{
+    display: none !important;
+}
+
+main{
+    display: inline-flex;
+    flex-direction: row;
+
+    @media(max-width: 768px){
+        display: block;
+    }
+}
+
+h2,p,.players{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.players{
+    padding: 24px;
+    position: fixed;
+    top: 50vh;
+    background-color:rgba(0, 255, 255, 0.263);
+    border-radius: 4px 0 0 4px;
+    @media (max-width: 768px){
+        position: relative;
+        top: 0;
+    }
+}
+
+.player-info{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 6px;
+    padding: 6px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid gray;
+    &.--active{
+        background-color: rgba(0, 255, 255, 0.58);
+        border-radius: 4px;
+    }
+}
+
+.ammo{
+    display: flex;
+    flex-direction: column;
+}
+
+.score{
+    width: fit-content;
+    height: fit-content;
+    padding: 10%;
+    border-radius: 50%;
+    background-color: #ff4da661;
+}
+
+.board{
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(16,var(--grid-cell-size));
+    column-gap: 6px;
+    row-gap: 3px;
+    justify-content: center;
+    width: 70vw;
+    @media (max-width: 768px){
+        width: auto;
+    }
+
+}
+.cell{
+    background-color: navy;
+    border: 2px solid grey;
+    width: var(--grid-cell-size);
+    height: var(--grid-cell-size);
+    >span{
+        margin: auto;
+    }
+}
+
+.highlighted {
+    overflow: hidden;
+    background: linear-gradient(to right, navy 20%, navy 40%, darkblue 50%, deepskyblue 10%, navy 70%, navy 100%);
+    background-size: 200% auto;
+    animation: shine 2s ease-out  infinite;
+}
+.goto{
+    background-image: radial-gradient(green 10%, transparent 10%),
+          radial-gradient(white 20%, transparent 10%);
+}
+      
+/*Begin shimmer code*/
+    
+@keyframes shine {
+to {
+    background-position: 200% center;
+    }
+}navy
+      
+.info-panel{
+    width: 30vw;
+}
+
+#gameMessage{
+    color: red;
+    font-style: italic;
+    font-size: 2rem;
+    font-weight: bolder;
+    max-width: 300px;
+    padding: 24px;
+    border-radius: 8px;
+    background-color: rgba(127, 255, 212, 0.281);
+    &:empty{
+        display: none;
+    }
+}
+#gameControls{
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    button{
+        text-align: center;
+        font-size: 28px;
+        padding: 8px;
+        background-color: cornflowerblue;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+}
+#gameDice{
+    display: none;
+    margin-top: 10px;
+    >button{
+        background-color: royalblue;
+        height: 150px;
+        width: 100%;
+        font-size: 80px;
+        margin: auto;
+        color: white;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 700;
+    }
+}
+.party-glow{
+    -webkit-animation: glow 1s ease-in-out infinite alternate;
+    -moz-animation: glow 1s ease-in-out infinite alternate;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+    }
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+}
+
+.boom{
+    font-size: 30px;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>a little space game</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="./app.js"></script>
+    </head>
+    <body>
+        <nav>
+            <h2>James Space Game</h2>
+            <p><i>Who's playing?</i></p>
+            <input type="text" name="players[]" id="player1" data-name="James" placeholder="James?" />
+            <input type="text" name="players[]" id="player2" data-name="Kayla" placeholder="Kayla?" />
+            <input type="text" name="players[]" id="player3" data-name="Rowan" placeholder="Rowan?" />
+            <input type="text" name="players[]" id="player4" data-name="CRAB" placeholder="...CRAB?" />
+            <button id="start">Start</button>
+        </nav>
+        <main class="hidden">
+            <div id="gameBoard" class="board" data-board-size="16"></div>
+            <div id="gameInfo" class="info-panel">
+                <h2>James Space Game</h2>
+                <p>
+                    <button id="obstacleButton">
+                        Add obstacle
+                    </button>
+                    <button id="shipButton">
+                        Add ship
+                    </button>
+                    <button id="declareButton">
+                        Declare direction
+                    </button>
+                </p>
+                <code id="gameStatus"></code>
+                <br />
+                <div id="gameControls"></div>
+                <div id="gameDice">
+                    <button id="counter">🎲 🎲</button>
+                </div>
+                <br />
+                <p id="gameMessage"></p>
+                <div class="players">
+                    <div id="players">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>
